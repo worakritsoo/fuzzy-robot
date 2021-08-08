@@ -12,7 +12,7 @@
 <div class="grid place-items-center">
   <input
     type="search"
-    placeholder="Search"
+    placeholder="พิมพ์คำเพื่อค้นหา"
     bind:value={q}
-    class="items-center text-3xl font-bold outline-none" />
+    class="items-center text-3xl font-bold outline-none rounded-md shadow-md" />
 </div>

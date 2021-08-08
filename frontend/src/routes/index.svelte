@@ -36,9 +36,15 @@
     {#if style}
       <div class="shadow-md my-4 p-4 rounded-md hover:shadow-xl">
         <a sveltekit:prefetch href="/blog/{post.id}">
-          <h4 class="font-bold hover:text-purple-400">{post.title}</h4>
-          <p class="mt-2 text-gray-800">{post.url}</p>
+          <h4 class="font-bold hover:text-purple-400">
+            <a href={post.url} target="_blank">
+              {post.title}
+            </a>
+          </h4>
+          <p class="mt-2 text-gray-800">{post.content}</p>
           <p class="text-gray-500">By: {post.author?.username}</p>
+
+          Blog
         </a>
       </div>
     {:else}

@@ -46,7 +46,6 @@
   <div class="flex items-center justify-between container mx-auto">
     <a href="/" class="font-bold no-underline">P B O X</a>
     <Searchbox {posts} />
-
     <section>
       {#if !$user}
         <a href="/login" class="font-mono no-underline">Login</a>

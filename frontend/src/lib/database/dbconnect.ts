@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGODB_URI = import.meta.env.VITE_MONGODB_URI;
+const MONGODB_URI = import.meta.env.VITE_DATABASE_URI;
 
 if (!MONGODB_URI) {
   throw new Error(
