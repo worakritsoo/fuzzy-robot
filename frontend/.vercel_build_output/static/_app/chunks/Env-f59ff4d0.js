@@ -1,0 +1,1 @@
+import{D as e}from"./vendor-6f853f0b.js";const t=e(null),s=e("");t.set(JSON.parse(localStorage.getItem("user"))||""),t.subscribe((e=>{localStorage.setItem("user",JSON.stringify(e))})),s.set(localStorage.getItem("token")),s.subscribe((e=>{localStorage.setItem("token",e)}));const o="https://pboxapi.herokuapp.com";export{o as A,s as j,t as u};

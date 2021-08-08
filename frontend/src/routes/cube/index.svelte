@@ -1,4 +1,14 @@
+<script context="module">
+  export async function load({ fetch }) {
+    const res = await fetch(API + '/cubes');
+    return { props: { cubes: await res.json() } };
+  }
+</script>
+
 <script>
+  export let cubes = [];
+  import Crud from '$lib/components/Crud.svelte';
+  import { API } from '$lib/Env';
   import { onMount } from 'svelte';
 
   let time = new Date();
@@ -29,15 +39,4 @@
   }
 </script>
 
-<button on:click={() => (pomo = 0)}>Start</button>
-<header>Cube</header>
-
-<div class="shadow-md grid h-full">
-  {pomo}
-</div>
-
-<style lang="postcss">
-  header {
-    @apply text-center p-4 text-2xl font-bold;
-  }
-</style>
+<Crud items={cubes} />

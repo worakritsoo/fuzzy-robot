@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cubes",
+  "info": {
+    "name": "cube",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "start_date": {
+      "type": "datetime"
+    },
+    "end_date": {
+      "type": "datetime"
+    }
+  }
+}

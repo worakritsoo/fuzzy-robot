@@ -9,10 +9,8 @@
   let style = true;
 </script>
 
-<div class="grid place-items-center">
-  <input
-    type="search"
-    placeholder="พิมพ์คำเพื่อค้นหา"
-    bind:value={q}
-    class="items-center text-3xl font-bold outline-none rounded-md shadow-md" />
-</div>
+<input
+  type="search"
+  placeholder="พิมพ์คำเพื่อค้นหา"
+  bind:value={q}
+  class="items-center text-3xl font-bold outline-none rounded-md shadow-md" />

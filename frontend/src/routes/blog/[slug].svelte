@@ -44,7 +44,7 @@
 
   async function deletePost() {
     if (!localStorage.getItem('token')) {
-      goto('/login');
+      goto('/auth/login');
       return;
     }
 
@@ -72,7 +72,7 @@
 <h1 class="text-center text-4xl mt-4">{post.title}</h1>
 <p class="text-center mt-2">By: {post.author.username}</p>
 
-{#if $user && post.author.id === $user.id}
+{#if $user && post.author['username'] === $user['username']}
   <p class="my-2 flex justify-center items-center gap-3">
     <button
       class="bg-blue-500 text-white font-bold py-2 px-4 rounded border-transparent"
