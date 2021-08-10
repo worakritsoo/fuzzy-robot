@@ -9,8 +9,9 @@
   let style = true;
 </script>
 
-<input
+<ion-searchbar on:input={(e) => (q = e.target.value)} />
+<!-- <input
   type="search"
   placeholder="พิมพ์คำเพื่อค้นหา"
   bind:value={q}
-  class="items-center text-3xl font-bold outline-none rounded-md shadow-md" />
+  class="items-center text-3xl font-bold outline-none rounded-md shadow-md" /> -->

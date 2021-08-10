@@ -52,27 +52,37 @@
 
 <body>
   <nav class="bg-white border-b border-gray-500 py-6 px-4 w-full">
-    <div class="flex items-center justify-between container mx-auto">
-      <a href="/" class="font-bold no-underline">P B O X</a>
+    <div class="flex items-center justify-between mx-auto">
+      <a href="/" class="font-bold no-underline">
+        <ion-chip color="tertiary" mode="ios" outline="true">
+          <ion-label>PBOX</ion-label>
+          <ion-icon name="cube" />
+        </ion-chip>
+      </a>
       <Searchbox {posts} />
       <section>
         {#if !$user}
-          <a href="/auth" class="font-mono no-underline">Login</a>
+          <a href="/auth" class="font-mono no-underline">ลงชื่อเข้าใช้</a>
         {:else}
-          <a href="/blog/new" class="font-mono no-underline mr-3">New</a>
-          <a href="/auth">
-            <span class="font-mono text-gray-500">{$user.username}</span>
-          </a>
-          <button on:click={logout}>Logout</button>
+          <div class="md:flex md:flex-cols">
+            <a href="/blog/new" class="font-mono no-underline mr-3">สร้าง</a>
+            <a href="/auth">
+              <ion-chip color="tertiary" mode="ios" outline="true">
+                <ion-avatar>
+                  <img src={$user['photoURL']} />
+                </ion-avatar>
+              </ion-chip>
+              <span class="font-mono text-gray-500">{$user.username}</span>
+            </a>
+          </div>
+          <button on:click={logout}>🔓</button>
         {/if}
       </section>
     </div>
   </nav>
   <ion-content>
     {#if $user}
-      {#if !loading}
-        <slot />
-      {/if}
+      <slot />
     {:else}
       <Login />
     {/if}

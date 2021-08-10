@@ -1,0 +1,1 @@
+import{D as t,Q as e}from"./vendor-d81b028b.js";const n=t([]),o=t("");o.set(localStorage.getItem("token")),o.subscribe((t=>{localStorage.setItem("token",t)}));const a=e(new Date,(function(t){const e=setInterval((()=>{t(new Date)}),1e3);return function(){clearInterval(e)}}));export{n as p,a as t};

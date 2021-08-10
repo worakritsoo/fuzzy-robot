@@ -7,7 +7,7 @@
 
 {#if $user}
   <div
-    class="animate container  transition-all grid place-items-center shadow-md mx-4 w-full">
+    class="animate container  transition-all grid place-items-center shadow-md  w-full">
     <h1>
       {$user['username']}
     </h1>

@@ -35,14 +35,14 @@
   {#each $postStore as post}
     {#if style}
       <div class="shadow-md my-4 p-4 rounded-md hover:shadow-xl">
-        <a sveltekit:prefetch href="/blog/{post.id}">
+        <a sveltekit:prefetch href="/posts/{post._id}">
           <h4 class="font-bold hover:text-purple-400">
             <a href={post.url} target="_blank">
               {post.title}
             </a>
           </h4>
           <p class="mt-2 text-gray-800">{post.content}</p>
-          <p class="text-gray-500">By: {post.author?.username}</p>
+          <p class="text-gray-500">By: {post.author?.['displayName']}</p>
 
           Blog
         </a>
@@ -68,7 +68,7 @@
           </div>
           <div class="col-start-2 row-start-1 row-end-3">
             <dt class="sr-only">Users</dt>
-            By:{post.author?.username}
+            By:{post.author?.['displayName']}
           </div>
         </dl>
       </a>
