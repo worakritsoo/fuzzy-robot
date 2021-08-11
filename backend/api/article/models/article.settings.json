@@ -27,6 +27,10 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "articles"
+    },
+    "tickets": {
+      "via": "articles",
+      "collection": "ticket"
     }
   }
 }

@@ -65,7 +65,7 @@
           <a href="/auth" class="font-mono no-underline">ลงชื่อเข้าใช้</a>
         {:else}
           <div class="md:flex md:flex-cols">
-            <a href="/blog/new" class="font-mono no-underline mr-3">สร้าง</a>
+            <a href="/posts/new" class="font-mono no-underline mr-3">สร้าง</a>
             <a href="/auth">
               <ion-chip color="tertiary" mode="ios" outline="true">
                 <ion-avatar>

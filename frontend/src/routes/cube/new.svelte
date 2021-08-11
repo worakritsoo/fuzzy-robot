@@ -1,4 +1,5 @@
 <script>
+  import Editor from '$lib/components/Editor.svelte';
   import Reviews from '$lib/components/Reviews.svelte';
   import { tick } from 'svelte';
   let content;
@@ -34,7 +35,7 @@
       // @ts-ignore
       const { selectionStart, selectionEnd, value } = this;
       const selection = value.slice(selectionStart, selectionEnd);
-      const replacement = /[a-z]\w+/g.test(selection)
+      const replacement = /[*]\w+/g.test(selection)
         ? `[link](${selection})`
         : selectionEnd;
 
@@ -68,21 +69,20 @@
   }
 </script>
 
-<!-- markup (zero or more items) goes here -->
-<div class="flex w-full">
-  <textarea
-    on:keydown={handleKey}
-    class="flex-1"
-    name="content"
-    bind:value={content}
-    id=""
-    cols="30"
-    rows="10" />
-  <div class="flex-1">
-    <Reviews bind:content />
+<Editor />
+<div class="m-4">
+  <!-- markup (zero or more items) goes here -->
+  <div class="prose prose-sm flex w-full">
+    <textarea
+      on:keydown={handleKey}
+      class="flex-1"
+      name="content"
+      bind:value={content}
+      id=""
+      cols="30"
+      rows="10" />
+    <div class="flex-1">
+      <Reviews bind:content />
+    </div>
   </div>
 </div>
-
-<style>
-  /* your styles go here */
-</style>

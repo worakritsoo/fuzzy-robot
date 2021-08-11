@@ -1,5 +1,7 @@
 <script>
-  export let source = `
+  import { tick } from 'svelte';
+  import marked from 'marked';
+  export let content = `
 # H1 heading
 
 ## H2 heading
@@ -24,9 +26,65 @@
 
 [TOC](#H1)
 `;
+  async function handleKey(event) {
+    if (event.ctrlKey && event.key === '.') {
+      event.preventDefault();
+      // @ts-ignore
+      const { selectionStart, selectionEnd, value } = this;
+      const selection = value.slice(selectionStart, selectionEnd);
+      const replacement = /[a-z]\w+/g.test(selection)
+        ? `![link](${selection})`
+        : selectionEnd;
 
-  import marked from 'marked';
-  $: markdown = marked(source);
+      content =
+        value.slice(0, selectionStart) +
+        replacement +
+        value.slice(selectionEnd);
+
+      await tick();
+      this.selectionStart = selectionStart;
+      this.selectionEnd = selectionEnd;
+    }
+
+    if (event.ctrlKey && event.key === '/') {
+      event.preventDefault();
+      // @ts-ignore
+      const { selectionStart, selectionEnd, value } = this;
+      const selection = value.slice(selectionStart, selectionEnd);
+      const replacement = /[a-z]\w+/g.test(selection)
+        ? `[link](${selection})`
+        : selectionEnd;
+
+      content =
+        value.slice(0, selectionStart) +
+        replacement +
+        value.slice(selectionEnd);
+
+      await tick();
+      this.selectionStart = selectionStart;
+      this.selectionEnd = selectionEnd;
+    }
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      // @ts-ignore
+      const { selectionStart, selectionEnd, value } = this;
+      const selection = value.slice(selectionStart, selectionEnd);
+      const replacement = /[a-z]/.test(selection)
+        ? selection.toUpperCase()
+        : selection.toLowerCase();
+
+      content =
+        value.slice(0, selectionStart) +
+        replacement +
+        value.slice(selectionEnd);
+
+      await tick();
+      this.selectionStart = selectionStart;
+      this.selectionEnd = selectionEnd;
+    }
+  }
+
+  $: markdown = marked(content);
 
   // your script goes here
   let color;
@@ -41,7 +99,7 @@
   </header>
   <div class="markdown-editor">
     <div class="left-panel">
-      <textarea bind:value={source} class="source" />
+      <textarea bind:value={content} class="source" on:keydown={handleKey} />
     </div>
 
     <div class="right-panel">

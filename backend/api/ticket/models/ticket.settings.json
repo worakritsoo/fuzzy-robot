@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tickets",
+  "info": {
+    "name": "ticket"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "senddate": {
+      "type": "date"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "task",
+        "issue",
+        "guildline",
+        "tools",
+        "docs",
+        "othor"
+      ],
+      "default": "docs"
+    },
+    "articles": {
+      "collection": "article",
+      "via": "tickets",
+      "dominant": true
+    }
+  }
+}
